@@ -1,0 +1,37 @@
+<div class="container">
+    <!-- HEADER -->
+    <p class="header">let's work</p>
+    <!-- INPUT SCREEN -->
+    <div class="input-screen">
+        <div class="data-input">
+            <h2 class="input-icon">
+                >
+            </h2>
+            <h2 style="text-align: end;" *ngFor="let data of inputArr, let i = index">{{data}}&nbsp;</h2>
+        </div>
+    </div>
+    <!-- RESULT SCREEN -->
+    <div class="result-screen">
+        <div class="data-input">
+            <h2 class="result-icon">
+                =
+            </h2>
+            <h3 style="text-align: end;" *ngFor="let data of resultArr, let i = index">{{data}}&nbsp;</h3>
+        </div>
+    </div>
+    <!--INPUT FRAME -->
+    <div class="inputContainer">
+        <input *ngIf="!!_inputValidation('sp')" type="text" class="form-control input" name="1"
+            aria-describedby="address" placeholder="Enter start point ..." (keyup)="_handleChange($event,'sp')">
+        <button class="btn btn-primary submit" (click)="_submit()">
+            <h5 style="text-align: center;">Submit</h5>
+        </button>
+        <input *ngIf="!!_inputValidation('ep')" type="text" class="form-control input" name="2"
+            aria-describedby="address" placeholder="Enter end point ..." (keyup)="_handleChange($event,'ep')">
+
+        <!-- <input *ngIf="!_inputValidation('sp')" type="text" class="form-control wrongInput" name="3"
+            aria-describedby="address" placeholder="Enter start point ..." (keyup)="_handleChange($event,'sp')">
+        <input *ngIf="!_inputValidation('ep')" type="text" class="form-control wrongInput" name="4"
+            aria-describedby="address" placeholder="Enter end point ..." (keyup)="_handleChange($event,'ep')"> -->
+    </div>
+</div>

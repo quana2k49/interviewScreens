@@ -1,0 +1,38 @@
+<div class="container">
+    <!-- Logo -->
+    <img style="margin: 15px;" src="{{logo}}" />
+
+    <!-- Search Item -->
+    <input type="text" class="form-control searchItem" id="address" aria-describedby="address"
+        placeholder="Enter location ..." (keyup)="_search($event)">
+
+    <!-- Table -->
+    <div style="width: 75%" *ngIf="!!data.location">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="th-center" width='10%' scope="col">City</th>
+                    <th class="th-center" width='10%' scope="col">Weather</th>
+                    <th class="th-center" width='10%' scope="col">Temperature</th>
+                    <th class="th-center" width='15%' scope="col">Weather Description</th>
+                    <th class="th-center" width='5%' scope="col">Wind</th>
+                    <th class="th-center" width='10%' scope="col">Humidity</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="tr-center">{{data.location.name}}</td>
+                    <td class="tr-center"><img src="{{data.current.weather_icons}}" /></td>
+                    <td class="tr-center">{{data.current.temperature}} * C</td>
+                    <td class="tr-center">{{data.current.weather_descriptions}} </td>
+                    <td class="tr-center">{{data.current.wind_speed}}</td>
+                    <td class="tr-center">{{data.current.humidity}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button routerLink="/mathmatic" class="btn btn-default nextBtn">
+        <h5 style="color: #5870cb; text-align: center;">Next</h5>
+    </button>
+</div>
