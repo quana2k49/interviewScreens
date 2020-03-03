@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { WeatherService } from '../../shared/services/weather.service'
+import { debounce } from 'lodash';
+
 @Component({
   selector: 'app-weatherstack',
   templateUrl: './weatherstack.component.html',
@@ -7,7 +9,9 @@ import { WeatherService } from '../../shared/services/weather.service'
 })
 export class WeatherstackComponent implements OnInit {
   data: any = {}
-  constructor(private _service: WeatherService) { }
+  constructor(private _service: WeatherService) {
+    this._search = debounce(this._search, 500)
+  }
   logo = 'https://weatherstack.com/site_images/weatherstack_logo_footer.png'
   ngOnInit() {
     this._getWeather()

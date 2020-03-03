@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { debounce } from 'lodash';
 
 @Component({
   selector: 'app-mathmatic',
@@ -44,14 +45,14 @@ export class MathmaticComponent implements OnInit {
     this.resultArr = []
     for (let i = this.startPoint; i <= this.endPoint; i++) {
       this.inputArr.push(i)
-      if (!!this._isTrue(i)) {
+      if (!!this._checkConditions(i)) {
         this.resultArr.push(i)
       }
     }
   }
 
   //KIỂM TRA NGUYÊN TỐ
-  _isPrimeNumber(data) {
+  _checkPrime(data) {
     let res = true
     if (data == 1) {
       return false
@@ -73,34 +74,34 @@ export class MathmaticComponent implements OnInit {
   }
 
   //TỔNG CHỮ SỐ
-  _mission1(data) {
+  _condition1(data) {
     let tmp = data.toString()
     let sum = 0
     for (let i = 0; i < tmp.length; i++) {
       sum += parseInt(tmp[i])
     }
-    if (!!this._isPrimeNumber(sum)) {
+    if (!!this._checkPrime(sum)) {
       return true
     }
     else return false
   }
 
   //TỔNG BÌNH PHƯƠNG CÁC SỐ
-  _mission2(data) {
+  _condition2(data) {
     let tmp = data.toString()
     let sum = 0
     for (let i = 0; i < tmp.length; i++) {
       sum += Math.pow(parseInt(tmp[i]), 2)
     }
-    if (!!this._isPrimeNumber(sum)) {
+    if (!!this._checkPrime(sum)) {
       return true
     }
     else return false
   }
 
   //ĐIỀU KIỆN ĐÚNG
-  _isTrue(data) {
-    if (!!this._mission1(data) && !!this._mission2(data)) {
+  _checkConditions(data) {
+    if (!!this._condition1(data) && !!this._condition2(data)) {
       return true
     }
   }
